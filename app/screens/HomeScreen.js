@@ -93,6 +93,7 @@ export default function HomeScreen({ navigation }) {
               <ItemCard
                 image={item.image}
                 title={item.title}
+                onPress={() => handleProductDetails(item)}
                 price={item.price}
                 size={{ width: 183, height: 212 }}
               />

@@ -12,6 +12,7 @@ import BackgroundAuth from "../components/BackgroundAuth";
 import colors from "../config/colors";
 import { StatusBar } from "expo-status-bar";
 import routes from "../navigation/routes";
+import useAuth from "../hooks/useAuth";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -22,10 +23,11 @@ const validationSchema = Yup.object().shape({
 
 export default function RegisterScreen({ navigation }) {
   const [error, setError] = useState();
+  const authUser = useAuth();
 
-  const handleSubmit = ({ email, name, password, phone }) => {
-    console.log(email, name, password, phone);
-    navigation.navigate(routes.HOME);
+  const handleSubmit = (userDetails) => {
+    authUser.logIn(userDetails);
+    console.log(authUser.user);
   };
 
   return (

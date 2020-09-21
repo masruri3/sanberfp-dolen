@@ -24,8 +24,7 @@ export default function App() {
       <StatusBar style="light" translucent />
       <AuthContext.Provider value={{ user, setUser }}>
         <NavigationContainer ref={navigationRef}>
-          {/* {user ? <AppNavigator /> : <AuthNavigator />} */}
-          <HomeNavigator />
+          {user ? <HomeNavigator /> : <AuthNavigator />}
         </NavigationContainer>
       </AuthContext.Provider>
     </>

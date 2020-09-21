@@ -17,8 +17,14 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.zahid.dolen",
+      "versionCode": 1
+    },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/masruri3/sanberfp-dolen"
   }
 }

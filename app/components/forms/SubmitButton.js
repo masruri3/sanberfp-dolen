@@ -19,7 +19,7 @@ function SubmitButton({ title }) {
 
 const styles = StyleSheet.create({
   button: {
-    height: 50,
+    flex: 0,
   },
 });
 

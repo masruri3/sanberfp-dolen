@@ -1,31 +1,55 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import colors from "../config/colors";
 
-export default function AppButton({ onPress, style, title, primary }) {
+export default function AppButton({
+  borderRadius = 15,
+  iconName,
+  color = colors.primary,
+  onPress,
+  style,
+  title,
+  primary,
+  width = "100%",
+  height = 55,
+}) {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[
         styles.container,
         {
-          borderWidth: primary ? 0 : 1,
-          backgroundColor: primary ? colors.primary : "",
+          borderWidth: primary ? 0 : 2,
+          backgroundColor: primary ? color : "",
+          borderRadius,
+          borderColor: color,
+          height,
+          width,
         },
         style,
       ]}
     >
-      <Text
-        style={[
-          styles.text,
-          {
-            color: primary ? colors.white : colors.primary,
-          },
-        ]}
-      >
-        {title}
-      </Text>
+      {iconName && (
+        <MaterialCommunityIcons
+          color={primary ? colors.white : color}
+          name={iconName}
+          size={height * 0.5}
+        />
+      )}
+      {title && (
+        <Text
+          style={[
+            styles.text,
+            {
+              color: primary ? colors.white : color,
+            },
+          ]}
+        >
+          {title}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 }
@@ -34,15 +58,16 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: colors.primary,
-    borderRadius: 15,
-    borderColor: colors.primary,
-    height: 66,
-    justifyContent: "center",
-    width: "100%",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingHorizontal: 20,
   },
   text: {
     color: colors.white,
+    flex: 1,
     fontSize: 18,
     fontWeight: "700",
+    textAlign: "center",
   },
 });

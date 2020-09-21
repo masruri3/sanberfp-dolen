@@ -17,8 +17,10 @@ import SectionCardHeader from "../components/SectionCardHeader";
 import Screen from "../components/Screen";
 import ItemCardSeparator from "../components/ItemCardSeparator";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
+import RootNavigator from "../navigation/RootNavigator";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [products, setProducts] = useState();
 
   const getProducts = async () => {
@@ -28,6 +30,10 @@ export default function HomeScreen() {
         setProducts(json);
         // console.log(json);
       });
+  };
+
+  const handleProductDetails = (item) => {
+    RootNavigator.navigate("ProductDetails", item);
   };
 
   useEffect(() => {
@@ -68,9 +74,10 @@ export default function HomeScreen() {
             renderItem={({ item }) => (
               <ItemCard
                 image={item.image}
-                title={item.title}
-                price={item.price}
                 size={{ width: 120, height: 200 }}
+                onPress={() => handleProductDetails(item)}
+                price={item.price}
+                title={item.title}
               />
             )}
             horizontal={true}

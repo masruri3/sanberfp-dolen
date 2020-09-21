@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     width: "100%",
     height: 1,
-    marginVertical: 5,
+    marginVertical: 7,
   },
 });
 

@@ -11,6 +11,7 @@ import {
 import BackgroundAuth from "../components/BackgroundAuth";
 import colors from "../config/colors";
 import { StatusBar } from "expo-status-bar";
+import routes from "../navigation/routes";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -29,7 +30,6 @@ export default function RegisterScreen({ navigation }) {
 
   return (
     <>
-      <StatusBar style="light" />
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcome}>Lets Start</Text>
       </View>

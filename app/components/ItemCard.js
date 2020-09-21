@@ -6,12 +6,14 @@ import colors from "../config/colors";
 
 export default function ItemCard({
   image,
-  title,
+  onPress,
   price,
   size = { width, height },
+  title,
 }) {
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={[styles.container, { width: size.width, height: size.height }]}
     >
       <Image

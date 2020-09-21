@@ -1,10 +1,10 @@
-// import React from "react";
+import React from "react";
 
-// export const navigationRef = React.createRef();
+export const navigationRef = React.createRef();
 
-// const navigate = (name, params) =>
-//   navigationRef.current?.navigate(name, params);
+const navigate = (name, params) =>
+  navigationRef.current?.navigate(name, params);
 
-// export default {
-//   navigate,
-// };
+export default {
+  navigate,
+};

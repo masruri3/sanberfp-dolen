@@ -19,11 +19,12 @@ const validationSchema = Yup.object().shape({
   phone: Yup.number().required().label("Phone Number"),
 });
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
   const [error, setError] = useState();
 
   const handleSubmit = ({ email, name, password, phone }) => {
-    console.log(prop);
+    console.log(email, name, password, phone);
+    navigation.navigate(routes.HOME);
   };
 
   return (

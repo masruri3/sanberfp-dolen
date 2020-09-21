@@ -2,13 +2,13 @@ import Constants from "expo-constants";
 
 const settings = {
   dev: {
-    apiUrls: "http://192.168.1.9:9000/api/",
+    apiUrls: "https://fakestoreapi.com/",
   },
   staging: {
-    apiUrls: "http://192.168.1.9:9000/api/",
+    apiUrls: "https://fakestoreapi.com/",
   },
   prod: {
-    apiUrls: "http://192.168.1.9:9000/api/",
+    apiUrls: "https://fakestoreapi.com/",
   },
 };
 

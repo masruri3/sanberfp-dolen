@@ -1,5 +1,7 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image } from "react-native-expo-image-cache";
+
 import colors from "../config/colors";
 
 export default function ItemCard({
@@ -13,7 +15,7 @@ export default function ItemCard({
       style={[styles.container, { width: size.width, height: size.height }]}
     >
       <Image
-        source={image}
+        uri={image}
         style={[styles.image, { width: size.width }]}
         resizeMode="cover"
       />
@@ -21,7 +23,7 @@ export default function ItemCard({
         <Text style={styles.title} numberOfLines={2}>
           {title}
         </Text>
-        <Text style={styles.price}>{price}</Text>
+        <Text style={styles.price}>${price}</Text>
       </View>
     </TouchableOpacity>
   );

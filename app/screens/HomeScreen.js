@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FlatList,
   Image,
@@ -17,12 +17,25 @@ import SectionCardHeader from "../components/SectionCardHeader";
 import Screen from "../components/Screen";
 import ItemCardSeparator from "../components/ItemCardSeparator";
 import colors from "../config/colors";
-import { StatusBar } from "expo-status-bar";
 
 export default function HomeScreen() {
+  const [products, setProducts] = useState();
+
+  const getProducts = async () => {
+    await fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setProducts(json);
+        // console.log(json);
+      });
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <Screen>
-      <StatusBar />
       <ScrollView style={styles.container}>
         <View style={styles.header}>
           <SearchBox />
@@ -51,7 +64,7 @@ export default function HomeScreen() {
         <View style={styles.flashSellContainer}>
           <SectionCardHeader title="Flash Sell" countDown="03. 30. 30" />
           <FlatList
-            data={data.flashSell}
+            data={products}
             renderItem={({ item }) => (
               <ItemCard
                 image={item.image}
@@ -68,7 +81,7 @@ export default function HomeScreen() {
         <View style={styles.newProductContainer}>
           <SectionCardHeader title="New Product" />
           <FlatList
-            data={data.newProduct}
+            data={products}
             renderItem={({ item }) => (
               <ItemCard
                 image={item.image}

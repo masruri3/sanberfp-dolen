@@ -11,17 +11,19 @@ import {
 import BackgroundAuth from "../components/BackgroundAuth";
 import colors from "../config/colors";
 import { StatusBar } from "expo-status-bar";
+import routes from "../navigation/routes";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [error, setError] = useState();
 
   const handleSubmit = ({ email, password }) => {
-    console.log(prop);
+    console.log(email, password);
+    navigation.navigate(routes.HOME);
   };
 
   return (

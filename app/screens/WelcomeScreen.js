@@ -4,23 +4,28 @@ import { StyleSheet, Text, View } from "react-native";
 import AppButton from "../components/AppButton";
 import BackgroundAuth from "../components/BackgroundAuth";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcome}>Welcome</Text>
       </View>
-      <BackgroundAuth />
+      <BackgroundAuth height={750} />
       <View style={styles.actionBtContainer}>
         <AppButton
           style={styles.button}
           title="Register"
-          onPress={() => {}}
+          onPress={() => navigation.navigate(routes.REGISTER)}
           primary
         />
-        <AppButton style={styles.button} title="Login" onPress={() => {}} />
+        <AppButton
+          style={styles.button}
+          title="Login"
+          onPress={() => navigation.navigate(routes.LOGIN)}
+        />
       </View>
     </View>
   );

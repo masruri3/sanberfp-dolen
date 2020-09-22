@@ -33,7 +33,7 @@ export default function ItemCard({
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 5,
+    borderRadius: 10,
     overflow: "hidden",
     borderColor: colors.light,
     borderWidth: 1,
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: "70%",
+    borderRadius: 10,
   },
   price: {
     fontSize: 12,

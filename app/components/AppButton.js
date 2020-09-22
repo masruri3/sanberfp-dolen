@@ -10,9 +10,10 @@ export default function AppButton({
   color = colors.primary,
   onPress,
   style,
+  textStyle = [],
   title,
   primary,
-  width = "100%",
+  width = iconName ? height : "100%",
   height = 55,
 }) {
   return (
@@ -21,7 +22,7 @@ export default function AppButton({
       style={[
         styles.container,
         {
-          borderWidth: primary ? 0 : 2,
+          borderWidth: primary ? 0 : 1,
           backgroundColor: primary ? color : "",
           borderRadius,
           borderColor: color,
@@ -45,6 +46,7 @@ export default function AppButton({
             {
               color: primary ? colors.white : color,
             },
+            { ...textStyle },
           ]}
         >
           {title}
@@ -58,13 +60,11 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: colors.primary,
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-around",
     paddingHorizontal: 20,
   },
   text: {
-    color: colors.white,
     flex: 1,
     fontSize: 18,
     fontWeight: "700",

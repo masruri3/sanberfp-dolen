@@ -10,7 +10,7 @@ import ListItemSeparator from "../components/ListItemSeparator";
 import AppButton from "../components/AppButton";
 
 const ProductDetailsScreen = ({ route }) => {
-  const product = route.params;
+  // const product = route.params;
   return (
     <>
       <Image style={styles.image} uri={product.image} />
@@ -54,12 +54,14 @@ const ProductDetailsScreen = ({ route }) => {
           onPress={() => {}}
         />
         <AppButton
-          style={styles.btBuyNow}
+          style={{ ...btProp }}
+          textStyle={{ fontSize: 15 }}
           title="Beli Sekarang"
           onPress={() => {}}
         />
         <AppButton
-          style={styles.btAddCart}
+          style={{ ...btProp }}
+          textStyle={{ fontSize: 15 }}
           title="+ Keranjang"
           iconName="cart-plus"
           onPress={() => {}}
@@ -70,7 +72,12 @@ const ProductDetailsScreen = ({ route }) => {
   );
 };
 
-const btSize = 45;
+const btProp = {
+  borderRadius: 10,
+  flex: 1,
+  height: 45,
+  marginHorizontal: 5,
+};
 
 const styles = StyleSheet.create({
   actionContainer: {
@@ -82,23 +89,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "row",
   },
-  btAddCart: {
-    borderRadius: 10,
-    borderWidth: 0,
-    height: btSize,
-    marginHorizontal: 5,
-  },
-  btBuyNow: {
-    borderRadius: 10,
-    height: btSize,
-    marginHorizontal: 5,
-  },
+  btText: {},
   btMessage: {
-    borderRadius: 10,
+    ...btProp,
     flex: 0,
-    height: btSize,
-    width: btSize,
-    marginHorizontal: 5,
+    width: btProp.height,
     paddingHorizontal: 0,
   },
   featuresContainer: {
@@ -152,14 +147,14 @@ const styles = StyleSheet.create({
   },
 });
 
-// const product = {
-//   category: "electronics",
-//   description:
-//     "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
-//   id: 13,
-//   image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-//   price: 599,
-//   title: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
-// };
+const product = {
+  category: "electronics",
+  description:
+    "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
+  id: 13,
+  image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+  price: 599,
+  title: "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
+};
 
 export default ProductDetailsScreen;

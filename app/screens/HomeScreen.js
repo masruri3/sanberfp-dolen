@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import SearchBox from "../components/SearchBox";
 import Category from "../components/Category";
@@ -18,6 +18,7 @@ import Screen from "../components/Screen";
 import ItemCardSeparator from "../components/ItemCardSeparator";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
+import PayBar from "../components/PayBar";
 import RootNavigator from "../navigation/RootNavigator";
 
 export default function HomeScreen({ navigation }) {
@@ -33,7 +34,7 @@ export default function HomeScreen({ navigation }) {
   };
 
   const handleProductDetails = (item) => {
-    RootNavigator.navigate("ProductDetails", item);
+    RootNavigator.navigate(routes.PRODUCT_DETAILS, item);
   };
 
   useEffect(() => {
@@ -41,33 +42,57 @@ export default function HomeScreen({ navigation }) {
   }, []);
 
   return (
-    <Screen>
+    <>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
           <SearchBox />
-          <AntDesign style={styles.iconCamera} name="bells" size={20} />
+          <MaterialCommunityIcons
+            style={styles.iconTopBar}
+            name="heart"
+            size={25}
+          />
+          <MaterialCommunityIcons
+            style={styles.iconTopBar}
+            name="message-text"
+            size={25}
+          />
+          <MaterialCommunityIcons
+            style={styles.iconTopBar}
+            name="cart"
+            size={25}
+          />
         </View>
         <TouchableOpacity>
           <Image
             style={styles.banner}
-            source={require("../assets/Slider.png")}
+            source={require("../assets/banner1.png")}
           />
         </TouchableOpacity>
-        <View style={styles.categoryContainer}>
-          <FlatList
-            data={data.category}
-            renderItem={({ item }) => (
-              <Category
-                title={item.title}
-                icon={item.icon}
-                colorBackground={item.background}
-              />
-            )}
-            horizontal={true}
-            keyExtractor={(item) => item.id.toString()}
-          />
+        <View style={styles.payContainer}>
+          <View style={{ paddingVertical: 20, paddingHorizontal: 10 }}>
+            <PayBar />
+          </View>
+          <View style={{ paddingBottom: 20 }}>
+            <FlatList
+              data={data.category}
+              renderItem={({ item }) => (
+                <Category
+                  title={item.title}
+                  icon={item.icon}
+                  iconColor={item.iconColor}
+                />
+              )}
+              horizontal={true}
+              keyExtractor={(item) => item.id.toString()}
+              ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
+            />
+          </View>
         </View>
-        <View style={styles.flashSellContainer}>
+        <Image
+          style={styles.banner2}
+          source={require("../assets/banner2.png")}
+        />
+        <View style={styles.listingHorizontal}>
           <SectionCardHeader title="Flash Sell" countDown="03. 30. 30" />
           <FlatList
             data={products}
@@ -85,7 +110,7 @@ export default function HomeScreen({ navigation }) {
             keyExtractor={(item) => item.id.toString()}
           />
         </View>
-        <View style={styles.newProductContainer}>
+        <View style={styles.listingHorizontal}>
           <SectionCardHeader title="New Product" />
           <FlatList
             data={products}
@@ -95,7 +120,7 @@ export default function HomeScreen({ navigation }) {
                 title={item.title}
                 onPress={() => handleProductDetails(item)}
                 price={item.price}
-                size={{ width: 183, height: 212 }}
+                size={{ width: 120, height: 200 }}
               />
             )}
             horizontal={true}
@@ -104,26 +129,32 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
       </ScrollView>
-    </Screen>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   banner: {
-    marginVertical: 10,
-    borderRadius: 7,
-    height: 190,
+    height: 240,
+    width: "100%",
+  },
+  banner2: {
+    flex: 1,
     width: "100%",
   },
   categoryContainer: {
     marginVertical: 5,
     flexDirection: "row",
+    backgroundColor: "#255BA5",
   },
   container: {
-    backgroundColor: colors.white,
-    paddingHorizontal: 15,
+    backgroundColor: colors.light,
   },
-  flashSellContainer: {
+  listingHorizontal: {
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
     marginVertical: 5,
   },
   header: {
@@ -131,10 +162,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 5,
+    top: 30,
+    elevation: 1,
+    position: "absolute",
+    zIndex: 1,
   },
-  iconCamera: {
+  iconTopBar: {
     color: colors.medium,
-    marginHorizontal: 10,
+    margin: 5,
+  },
+  payContainer: {
+    backgroundColor: "#255BA5",
   },
   newProductContainer: {
     marginVertical: 5,

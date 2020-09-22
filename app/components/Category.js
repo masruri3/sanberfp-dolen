@@ -1,16 +1,27 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import colors from "../config/colors";
 
-export default function Category({ title, icon, colorBackground }) {
+export default function Category({
+  title,
+  icon,
+  colorBackground = colors.light,
+  iconColor = colors.dark,
+}) {
   return (
     <TouchableOpacity style={styles.container}>
-      <LinearGradient style={styles.iconBackground} colors={colorBackground}>
-        <FontAwesome5 style={styles.icon} name={icon} size={27} />
-      </LinearGradient>
-      <Text>{title}</Text>
+      <View
+        style={[styles.iconBackground, { backgroundColor: colorBackground }]}
+      >
+        <FontAwesome5
+          color={iconColor}
+          style={styles.icon}
+          name={icon}
+          size={30}
+        />
+      </View>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -18,24 +29,21 @@ export default function Category({ title, icon, colorBackground }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    marginRight: 27,
+    alignContent: "center",
+    width: 70,
   },
   iconBackground: {
     width: 55,
     height: 55,
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 5,
   },
-  icon: {
-    color: colors.white,
-    opacity: 0.8,
-  },
   title: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: "500",
     textAlign: "center",
-    color: colors.medium,
+    color: colors.white,
   },
 });

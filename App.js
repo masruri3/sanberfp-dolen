@@ -15,6 +15,9 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ProductDetailsScreen from "./app/screens/ProductDetailsScreen";
 import HomeNavigator from "./app/navigation/HomeNavigator";
+import AccountScreen from "./app/screens/AccountScreen";
+import HomeScreen from "./app/screens/HomeScreen";
+import RootStackNavigator from "./app/navigation/RootStackNavigator";
 
 export default function App() {
   const [user, setUser] = useState();
@@ -24,7 +27,8 @@ export default function App() {
       <StatusBar style="light" translucent />
       <AuthContext.Provider value={{ user, setUser }}>
         <NavigationContainer ref={navigationRef}>
-          {user ? <HomeNavigator /> : <AuthNavigator />}
+          {user ? <AppNavigator /> : <AuthNavigator />}
+          {/* <AccountScreen /> */}
         </NavigationContainer>
       </AuthContext.Provider>
     </>

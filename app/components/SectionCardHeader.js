@@ -9,7 +9,7 @@ export default function SectionCardHeader({ title, countDown }) {
       <Text style={styles.subTitle}>{title}</Text>
       <Text style={styles.countDown}>{countDown}</Text>
       <Text style={styles.more}>All</Text>
-      <FontAwesome5 name="chevron-right" size={10} color={colors.seconday} />
+      <FontAwesome5 name="chevron-right" size={15} color={colors.primary} />
     </TouchableOpacity>
   );
 }
@@ -26,16 +26,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     fontSize: 15,
     fontWeight: "400",
-    color: colors.light,
+    color: colors.medium,
   },
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 5,
+    marginBottom: 5,
   },
   subTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-    color: "#4D4D4D",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: colors.primary,
   },
 });
